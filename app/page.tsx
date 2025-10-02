@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { EventCard } from '@/components/events/EventCard';
 import { useAppStore } from '@/store/useAppStore';
 import { CATEGORIES } from '@/types';
-import { Search, Sparkles, Users, Shield, Calendar, TrendingUp } from 'lucide-react';
+import { Search, Sparkles, Users, Shield, Calendar, TrendingUp, Heart, Quote, Award, MapPin, Clock, Info } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function HomePage() {
@@ -256,6 +256,166 @@ export default function HomePage() {
               </div>
               <div className="absolute -bottom-6 -right-6 h-64 w-64 rounded-full bg-primary/10 blur-3xl -z-10" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Success Metrics Section */}
+      <section className="py-20 bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Making Real Impact</h2>
+            <p className="text-xl text-slate-600">Helping thousands overcome social anxiety, one event at a time</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { icon: Users, label: 'New Friendships', value: '1,247', subtitle: 'Made this month', color: 'text-primary' },
+              { icon: Calendar, label: 'Events Hosted', value: '350+', subtitle: 'Across 15 cities', color: 'text-secondary' },
+              { icon: Heart, label: 'Anxiety Reduced', value: '68%', subtitle: 'Average reported decrease', color: 'text-success' },
+            ].map((metric, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow text-center"
+              >
+                <metric.icon className={`h-12 w-12 ${metric.color} mx-auto mb-4`} />
+                <div className="text-4xl font-bold text-slate-900 mb-2">{metric.value}</div>
+                <div className="text-lg font-semibold text-slate-700 mb-1">{metric.label}</div>
+                <div className="text-sm text-slate-500">{metric.subtitle}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Community Stories Section */}
+      <section className="py-20 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Stories from Our Community</h2>
+            <p className="text-xl text-slate-600">Real people, real connections, real change</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: 'Alex Martinez',
+                avatar: 'https://i.pravatar.cc/150?img=12',
+                role: 'Software Engineer',
+                quote: "I went from avoiding all social events to hosting my own hiking group. SocialCom showed me I wasn't alone in my anxiety.",
+                achievement: 'Hosted 8 events',
+              },
+              {
+                name: 'Jordan Park',
+                avatar: 'https://i.pravatar.cc/150?img=45',
+                role: 'Graphic Designer',
+                quote: "The three-tier visibility was a game-changer. I could see who was going before committing, which made all the difference for my anxiety.",
+                achievement: 'Made 12 new friends',
+              },
+              {
+                name: 'Sam Rivera',
+                avatar: 'https://i.pravatar.cc/150?img=33',
+                role: 'Teacher',
+                quote: "After moving to a new city, I was terrified to meet people. SocialCom's newcomer-friendly events helped me build my entire friend group.",
+                achievement: 'Attended 15 events',
+              },
+            ].map((story, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15 }}
+                className="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all border border-slate-100"
+              >
+                <Quote className="h-10 w-10 text-primary/20 mb-4" />
+                <p className="text-slate-700 mb-6 italic leading-relaxed">{story.quote}</p>
+                <div className="flex items-center space-x-4 mb-4">
+                  <img src={story.avatar} alt={story.name} className="h-14 w-14 rounded-full border-2 border-primary/20" />
+                  <div>
+                    <div className="font-semibold text-slate-900">{story.name}</div>
+                    <div className="text-sm text-slate-500">{story.role}</div>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-2 text-sm text-primary">
+                  <Award className="h-4 w-4" />
+                  <span className="font-medium">{story.achievement}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why SocialCom Section */}
+      <section className="py-20 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Why Choose SocialCom?</h2>
+            <p className="text-xl text-slate-600">Built differently, for people like you</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Shield,
+                title: 'Privacy-First',
+                description: 'Three-tier attendee visibility means you control what you share. See connections before committing, never feel exposed.',
+                features: ['Progressive disclosure', 'Opt-in sharing', 'Your data, your rules'],
+              },
+              {
+                icon: Heart,
+                title: 'Anxiety-Friendly',
+                description: 'Every feature designed to reduce anxiety. From noise filters to ice breakers, we make socializing comfortable.',
+                features: ['Structured events', 'Clear expectations', 'Exit strategies'],
+              },
+              {
+                icon: Users,
+                title: 'Community-Driven',
+                description: 'Real people hosting events for real connections. No algorithms pushing you to engage - just genuine community.',
+                features: ['Local hosts', 'Recurring groups', 'Buddy system'],
+              },
+            ].map((pillar, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all"
+              >
+                <pillar.icon className="h-12 w-12 text-primary mb-4" />
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">{pillar.title}</h3>
+                <p className="text-slate-600 mb-4 leading-relaxed">{pillar.description}</p>
+                <ul className="space-y-2">
+                  {pillar.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center space-x-2 text-sm text-slate-600">
+                      <Sparkles className="h-4 w-4 text-primary flex-shrink-0" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

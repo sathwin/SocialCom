@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Event } from '@/types';
-import { X, Sparkles } from 'lucide-react';
+import { X, Sparkles, UserPlus } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface RSVPModalProps {
@@ -17,6 +17,7 @@ interface RSVPModalProps {
 export function RSVPModal({ event, isOpen, onClose, onConfirm }: RSVPModalProps) {
   const [selectedStatus, setSelectedStatus] = useState<'going' | 'maybe' | 'interested'>('going');
   const [note, setNote] = useState('');
+  const [wantsBuddy, setWantsBuddy] = useState(false);
 
   const handleConfirm = () => {
     onConfirm(selectedStatus, note);
@@ -102,6 +103,41 @@ export function RSVPModal({ event, isOpen, onClose, onConfirm }: RSVPModalProps)
                       </button>
                     ))}
                   </div>
+                </div>
+
+                {/* Buddy System */}
+                <div className="space-y-3">
+                  <label className="text-sm font-medium text-slate-700">Event Buddy System</label>
+                  <button
+                    type="button"
+                    onClick={() => setWantsBuddy(!wantsBuddy)}
+                    className={`w-full rounded-lg border-2 p-4 text-left transition-all ${
+                      wantsBuddy
+                        ? 'border-primary bg-primary/5'
+                        : 'border-slate-200 hover:border-slate-300'
+                    }`}
+                  >
+                    <div className="flex items-start space-x-3">
+                      <div
+                        className={`flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
+                          wantsBuddy ? 'bg-primary border-primary' : 'border-slate-300'
+                        }`}
+                      >
+                        {wantsBuddy && <span className="text-white text-xs">✓</span>}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center space-x-2 mb-1">
+                          <UserPlus className={`h-4 w-4 ${wantsBuddy ? 'text-primary' : 'text-slate-600'}`} />
+                          <span className={`text-sm font-medium ${wantsBuddy ? 'text-primary' : 'text-slate-900'}`}>
+                            Match me with an event buddy
+                          </span>
+                        </div>
+                        <p className="text-xs text-slate-600">
+                          We'll pair you with another first-timer or experienced attendee to meet at the event. Great for extra comfort!
+                        </p>
+                      </div>
+                    </div>
+                  </button>
                 </div>
 
                 {/* Optional Note */}

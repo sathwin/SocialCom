@@ -24,6 +24,12 @@ import {
   TrendingUp,
   User,
   LogIn,
+  Car,
+  Bus,
+  Info,
+  ExternalLink,
+  AlertCircle,
+  DoorOpen,
 } from 'lucide-react';
 import { formatEventDate, formatEventTime, calculateCapacityPercentage, isEventFull } from '@/lib/utils';
 import { motion } from 'framer-motion';
@@ -344,6 +350,105 @@ export default function EventDetailPage() {
                 )}
               </motion.div>
             )}
+
+            {/* Pre-Event Comfort Tools */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="rounded-xl border border-slate-200 bg-gradient-to-br from-blue-50 to-white p-6 shadow-lg"
+            >
+              <div className="flex items-center space-x-3 mb-4">
+                <Info className="h-6 w-6 text-primary" />
+                <h3 className="text-xl font-semibold text-slate-900">Pre-Event Comfort Guide</h3>
+              </div>
+              <p className="text-sm text-slate-600 mb-4">
+                Everything you need to know to feel prepared and comfortable
+              </p>
+
+              <div className="space-y-4">
+                {/* What to Expect */}
+                <div className="bg-white rounded-lg p-4 border border-slate-100">
+                  <div className="flex items-start space-x-3">
+                    <Clock className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-slate-900 mb-2">What to Expect</h4>
+                      <ul className="space-y-2 text-sm text-slate-600">
+                        <li className="flex items-start space-x-2">
+                          <span className="text-primary">•</span>
+                          <span><strong>{formatEventTime(event.startDate)}</strong> - Arrival & mingling with welcome refreshments</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <span className="text-primary">•</span>
+                          <span><strong>15 min later</strong> - Host introduction and ice breaker activity</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <span className="text-primary">•</span>
+                          <span><strong>Main event</strong> - {event.eventStructure === 'structured' ? 'Guided activities with clear transitions' : 'Casual socializing in a relaxed setting'}</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <span className="text-primary">•</span>
+                          <span><strong>Final 30 min</strong> - Wind down and exchange contacts</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Getting There */}
+                <div className="bg-white rounded-lg p-4 border border-slate-100">
+                  <div className="flex items-start space-x-3">
+                    <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-slate-900 mb-2">Getting There</h4>
+                      <div className="space-y-2 text-sm text-slate-600">
+                        <div className="flex items-center space-x-2">
+                          <Car className="h-4 w-4 text-slate-400" />
+                          <span><strong>Parking:</strong> Free street parking available, or paid garage 1 block away</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Bus className="h-4 w-4 text-slate-400" />
+                          <span><strong>Public Transit:</strong> Red Line to Central Station (5 min walk)</span>
+                        </div>
+                        <a
+                          href={`https://maps.google.com/?q=${encodeURIComponent(`${event.address}, ${event.city}`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-2 text-primary hover:underline"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          <span>Open in Google Maps</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Comfort Reminders */}
+                <div className="bg-white rounded-lg p-4 border border-slate-100">
+                  <div className="flex items-start space-x-3">
+                    <AlertCircle className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-slate-900 mb-2">Comfort Reminders</h4>
+                      <ul className="space-y-2 text-sm text-slate-600">
+                        <li className="flex items-start space-x-2">
+                          <DoorOpen className="h-4 w-4 text-slate-400 mt-0.5 flex-shrink-0" />
+                          <span><strong>Exit Strategy:</strong> It's totally okay to leave early! Just let the host know.</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <Users className="h-4 w-4 text-slate-400 mt-0.5 flex-shrink-0" />
+                          <span><strong>Bring a Friend:</strong> Feel free to bring a +1 for extra comfort (just RSVP for them too!)</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <MessageCircle className="h-4 w-4 text-slate-400 mt-0.5 flex-shrink-0" />
+                          <span><strong>Questions?</strong> Message the host anytime - they're here to help!</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
             {/* Attendees - Three-Tier Visibility */}
             <motion.div
