@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { EventCard } from '@/components/events/EventCard';
 import { EventFilters } from '@/components/events/EventFilters';
@@ -9,7 +9,7 @@ import { Event } from '@/types';
 import { CalendarX } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export default function EventsPage() {
+function EventsContent() {
   const searchParams = useSearchParams();
   const { events, filters, updateFilters } = useAppStore();
   const [isLoading, setIsLoading] = useState(false);
@@ -141,5 +141,13 @@ export default function EventsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function EventsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <EventsContent />
+    </Suspense>
   );
 }

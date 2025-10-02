@@ -147,7 +147,7 @@ export function EventCard({ event, showQuickRSVP = true }: EventCardProps) {
               <div className="pt-2">
                 {userRSVP ? (
                   <Button variant="outline" size="sm" className="w-full">
-                    You're Going! ✓
+                    You&apos;re Going! ✓
                   </Button>
                 ) : isFull ? (
                   <Button variant="outline" size="sm" className="w-full" disabled>

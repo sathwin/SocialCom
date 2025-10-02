@@ -209,7 +209,7 @@ export default function ProfilePage() {
                       className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                     >
                       <option value="public">Public - Anyone can see my profile</option>
-                      <option value="connections">Connections Only - Only people I've met can see my profile</option>
+                      <option value="connections">Connections Only - Only people I&apos;ve met can see my profile</option>
                       <option value="private">Private - My profile is hidden</option>
                     </select>
                   ) : (
@@ -238,7 +238,7 @@ export default function ProfilePage() {
                         Show my attendance on events
                       </span>
                       <p className="text-xs text-slate-500 mt-1">
-                        When enabled, other attendees can see you're going to the same events
+                        When enabled, other attendees can see you&apos;re going to the same events
                       </p>
                     </div>
                   </label>

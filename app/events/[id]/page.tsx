@@ -59,7 +59,7 @@ export default function EventDetailPage() {
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-900">Event not found</h1>
-          <p className="mt-2 text-slate-600">This event doesn't exist or has been removed.</p>
+          <p className="mt-2 text-slate-600">This event doesn&apos;t exist or has been removed.</p>
           <Link href="/events">
             <Button className="mt-4">Browse Events</Button>
           </Link>
@@ -94,7 +94,7 @@ export default function EventDetailPage() {
           </div>
           <Button onClick={() => router.push('/login')} className="w-full">
             <LogIn className="mr-2 h-4 w-4" />
-            Login to see who's going
+            Login to see who&apos;s going
           </Button>
         </div>
       );
@@ -160,7 +160,7 @@ export default function EventDetailPage() {
       <div className="space-y-4">
         <div>
           <h3 className="text-lg font-semibold text-slate-900 mb-4">
-            Who's Going ({attendees.length} {attendees.length === 1 ? 'person' : 'people'})
+            Who&apos;s Going ({attendees.length} {attendees.length === 1 ? 'person' : 'people'})
           </h3>
 
           <div className="space-y-3 max-h-96 overflow-y-auto">
@@ -423,7 +423,7 @@ export default function EventDetailPage() {
                 userRSVP ? (
                   <div className="space-y-2">
                     <Button variant="outline" size="lg" className="w-full" disabled>
-                      You're Going! ✓
+                      You&apos;re Going! ✓
                     </Button>
                     <Button variant="ghost" size="sm" className="w-full" onClick={handleCancelRSVP}>
                       Cancel RSVP
